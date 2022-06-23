@@ -8,7 +8,7 @@ public class FrequencyCounter {
 
 	/*Challenge
 		Given a list of integers, count and return the number of times each value appears as an array of integers.
-		.
+		Sorting can be done using frequency counter
 	 * @param args
 	 */
 	public static void main(String args[]) {
