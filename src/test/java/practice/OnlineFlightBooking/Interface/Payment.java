@@ -15,6 +15,10 @@ class CreditCardPayment implements PaymentStrategy {
     public void pay(double amount) {
         System.out.println("Paid $" + amount + " with Credit Card");
     }
+
+    public void pay(){
+
+    }
 }
 
 class PaypalPayment implements PaymentStrategy {
@@ -63,9 +67,9 @@ public class Payment {
         System.out.print("Checking out $100: ");
         cart.checkout(100.00); // Uses Credit Card
 
-        // Change strategy
-        cart.setPaymentStrategy(payPal);
-        System.out.print("Checking out $50: ");
-        cart.checkout(50.00); // Uses PayPal
+        // // Change strategy
+        // cart.setPaymentStrategy(payPal);
+        // System.out.print("Checking out $50: ");
+        // cart.checkout(50.00); // Uses PayPal
     }
 }
