@@ -14,5 +14,12 @@ public class User {
         System.out.println("Email: " + email);
     }
 
+    public boolean validateEmail() {
+        // Simple email validation logic (for demonstration purposes)
+        return email.contains("@") && email.contains(".");
+    }
+    public String getName() {
+        return name;
+    }
     
 }
