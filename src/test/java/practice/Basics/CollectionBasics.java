@@ -100,7 +100,6 @@ public class CollectionBasics {
         
     }
 
-
     // Map - Add Student Name as Key , Student mark as Value
     // Find average of all students marks
     // Find student with highest marks

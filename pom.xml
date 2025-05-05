@@ -3,4 +3,16 @@
   <groupId>practice</groupId>
   <artifactId>practice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+
+  <dependencies>
+    <!-- Selenium WebDriver -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.12.1</version>
+    </dependency>
+  </dependencies>
+
+
 </project>
