@@ -14,8 +14,10 @@ public class EmiratesAirline {
 
 // declare  all xpath vriables here 
         private static WebDriver driver = new ChromeDriver();
+        private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+
         private static final String acceptButton="";
-        private static final String origin = "//*[contains(@class,'location-list')]//*[contains(@aria-label,$orign) and contains(@aria-label,'@airport')]/parent::li";
+        private static final String originLocator = "//*[contains(@class,'location-list')]//*[contains(@aria-label,'$origin') and contains(@aria-label,'$airport')]/parent::li";
                                 
 
 // function to launch browser and navigate to testURL
@@ -25,6 +27,18 @@ public class EmiratesAirline {
 // function to clear the departure airport
 
 // function to select the departure airport
+public void selectDepartureAirport(String origin, String airport){
+
+        try{
+        String departureElementToSelect = originLocator.replace("$origin", origin).replace("$airport", airport);
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(departureElementToSelect)));
+        WebElement departureToSelect = driver.findElement(By.xpath(departureElementToSelect));
+        departureToSelect.click();
+        }catch(Exception e){
+            System.out.println("Error in selecting departure airport: " + e.getMessage());
+        }
+}
 
 // function to select the arrival airport
 
@@ -60,11 +74,7 @@ public class EmiratesAirline {
 // Test Function - check if I can add adult passenger - 7, child 1, infant 1 and see all add buttons are disabled
   
 
-public void selectOrigin(String origin, String airport){
 
-        String departureElementToSelect = origin.replace("$origin", origin).replace("$airport", airport);
-
-}
 public static void main(String[] args) {
 
         
@@ -77,8 +87,7 @@ public static void main(String[] args) {
             WebElement acceptbutton = driver
                     .findElement(By.xpath("//div[@id='onetrust-consent-sdk']//button[text()='Accept']"));
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-            // wait.until(ExpectedConditions.visibilityOf(acceptbutton));
+                        // wait.until(ExpectedConditions.visibilityOf(acceptbutton));
             wait.until(ExpectedConditions.elementToBeClickable(acceptbutton));
             acceptbutton.click();
 
@@ -103,12 +112,7 @@ public static void main(String[] args) {
             departureInput.click();
             departureInput.sendKeys("New York");
 
-            // Select JFK from the list
-            String departureElementToSelect = "//*[contains(@class,'location-list')]//*[contains(@aria-label,'New York') and contains(@aria-label,'JFK')]/parent::li";
             
-           wait.until(ExpectedConditions.elementToBeClickable(By.xpath(departureElementToSelect)));
-           WebElement departureToSelect = driver.findElement(By.xpath(departureElementToSelect));
-           departureToSelect.click();
 
             // Enter Arrival Airport
             WebElement arrivalInput = driver.findElement(By.xpath(
