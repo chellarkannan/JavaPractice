@@ -14,7 +14,7 @@ public class EmiratesAirline {
 
 // declare  all xpath vriables here 
         private static WebDriver driver = new ChromeDriver();
-        private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
         private static final String acceptButton="";
         private static final String originLocator = "//*[contains(@class,'location-list')]//*[contains(@aria-label,'$origin') and contains(@aria-label,'$airport')]/parent::li";
@@ -88,7 +88,7 @@ public static void main(String[] args) {
                     .findElement(By.xpath("//div[@id='onetrust-consent-sdk']//button[text()='Accept']"));
 
                         // wait.until(ExpectedConditions.visibilityOf(acceptbutton));
-            wait.until(ExpectedConditions.elementToBeClickable(acceptbutton));
+            //wait.until(ExpectedConditions.elementToBeClickable(acceptbutton));
             acceptbutton.click();
 
             /* 
