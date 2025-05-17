@@ -4,7 +4,7 @@
   <artifactId>practice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-<properties>
+  <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
@@ -16,7 +16,16 @@
       <artifactId>selenium-java</artifactId>
       <version>4.12.1</version>
     </dependency>
+
+    <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.8.0</version>
+    <scope>test</scope>
+  </dependency>
+
   </dependencies>
 
+  
 
 </project>

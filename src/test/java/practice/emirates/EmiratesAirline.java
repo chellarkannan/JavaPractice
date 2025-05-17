@@ -11,16 +11,69 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmiratesAirline {
 
-    public static void main(String[] args) {
 
-        WebDriver driver = new ChromeDriver();
+// declare  all xpath vriables here 
+        private static WebDriver driver = new ChromeDriver();
+        private static final String acceptButton="";
+        private static final String origin = "//*[contains(@class,'location-list')]//*[contains(@aria-label,$orign) and contains(@aria-label,'@airport')]/parent::li";
+                                
 
+// function to launch browser and navigate to testURL
+
+// function to check handle accept pop up button
+
+// function to clear the departure airport
+
+// function to select the departure airport
+
+// function to select the arrival airport
+
+// function to select the departure date
+
+// function to select the return date
+
+// function to click continue button
+
+// add adult passenger 
+
+// add child passenger
+
+// add infant passenger 
+
+// function to check if page navigate to expected page 
+
+// -- all function templates above are page object model functions --
+
+// -- all function templates below are test functions --
+
+
+// Test Function - Check if user is able to perform search flights with default passenger count. 
+
+// Test Function - check if I can add child passenger - 6
+
+// Test Function - check if I can add infant passenger - 2
+
+// Test Function - check if I can reduce adult passenger below 1
+
+// Test Function - check if I can add adult passenger - 9 and see add button is disabled
+
+// Test Function - check if I can add adult passenger - 7, child 1, infant 1 and see all add buttons are disabled
+  
+
+public void selectOrigin(String origin, String airport){
+
+        String departureElementToSelect = origin.replace("$origin", origin).replace("$airport", airport);
+
+}
+public static void main(String[] args) {
+
+        
         // Launch the URL
         driver.get("https://www.emirates.com/in/english/");
+        driver.manage().window().maximize();
 
         try {
             Thread.sleep(5000);
-
             WebElement acceptbutton = driver
                     .findElement(By.xpath("//div[@id='onetrust-consent-sdk']//button[text()='Accept']"));
 
@@ -51,11 +104,11 @@ public class EmiratesAirline {
             departureInput.sendKeys("New York");
 
             // Select JFK from the list
-            WebElement departureToSelect = driver.findElement(By.xpath(
-                    "//*[contains(@class,'location-list')]//*[contains(@aria-label,'New York') and contains(@aria-label,'JFK')]/parent::li"));
-            wait.until(ExpectedConditions.elementToBeClickable(departureToSelect));
-
-            departureToSelect.click();
+            String departureElementToSelect = "//*[contains(@class,'location-list')]//*[contains(@aria-label,'New York') and contains(@aria-label,'JFK')]/parent::li";
+            
+           wait.until(ExpectedConditions.elementToBeClickable(By.xpath(departureElementToSelect)));
+           WebElement departureToSelect = driver.findElement(By.xpath(departureElementToSelect));
+           departureToSelect.click();
 
             // Enter Arrival Airport
             WebElement arrivalInput = driver.findElement(By.xpath(
@@ -64,24 +117,26 @@ public class EmiratesAirline {
             arrivalInput.sendKeys("Chennai");
 
             // Select 'MAA' from the list
+            String arrivalElementToSelect = "//div[@class='destination-dropdown']//*[contains(@class,'location-list')]//*[contains(@aria-label,'Chennai') and contains(@aria-label,'MAA')]/parent::li";;
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(arrivalElementToSelect)));
             WebElement arrivalToSelect = driver.findElement(By.xpath(
-                    "(//div[@id='search-flight-control']//*[contains(@class,'location-list')]//*[contains(@aria-label,'Chennai') and contains(@aria-label,'India')]/parent::li)[last()-1]"));
+                        arrivalElementToSelect));
             arrivalToSelect.click();
 
             // Select Departure Date
             Thread.sleep(5000);
             WebElement departureDate = driver.findElement(By.xpath(
-                    "(//*[contains(@aria-label,'Sunday, 25  May 2025')])[last()-1]"));
+                    "//*[@class='search-flight__section grid']//*[contains(@aria-label,'Sunday, 25  May 2025')]"));
             // WebElement departureDate =
             // driver.findElement(By.xpath("//div[@id='May_2025']/parent::div/parent::div[@class='CalendarMonth
             // CalendarMonth_1']/table//td[@id='14-05-2025']"));
-            wait.until(ExpectedConditions.visibilityOf(departureDate));
+            //wait.until(ExpectedConditions.visibilityOf(departureDate));
             departureDate.click();
 
             // Select Return Date
             WebElement returnDate = driver.findElement(By.xpath(
-                    "(//*[contains(@aria-label,'Friday, 20  June 2025')])[last()-1]"));
-            wait.until(ExpectedConditions.elementToBeClickable(returnDate));
+                    "//*[@class='search-flight__section grid']//*[contains(@aria-label,'Friday, 20  June 2025')]"));
+           // wait.until(ExpectedConditions.elementToBeClickable(returnDate));
             returnDate.click();
 
             // Click 'Continue'
@@ -89,34 +144,16 @@ public class EmiratesAirline {
                     .findElement(By.xpath("//span[text()='Search flights']/parent::button"));
             continueButton.click();
 
-            // // Select No of Passengers
-            // WebElement selectPassengers = driver.findElement(By.xpath(
-            //         "//div[@id='passenger-combobox']//a[@class='link call-to-action-icon rsw-passengers_PASSENGER_TYPES call-to-action']"));
-            // selectPassengers.click();
-            // // By default 1 Adult passenger, increment one more adult passenger
-            // WebElement incrementAdult = driver
-            //         .findElement(By.xpath("//div[@class='rsw-increment-field']//button[@id='increment-ADT']"));
-            // incrementAdult.click();
+            // check by default 1 adult passenger is selected, 0 child is listed o infant is displayed
 
-            // // By default 0 child passenger,increment one child passenger
-            // WebElement incrementChild = driver
-            //         .findElement(By.xpath("//div[@class='rsw-increment-field']//button[@id='increment-CHD']"));
-            // incrementChild.click();
+            // check if 9 adults are selected
 
-            // // Click 'Confirm'
-            // WebElement confirmButton = driver
-            //         .findElement(By.xpath("//div[@class='call-to-action__multiline-wrapper' and text()='Confirm']"));
-            // confirmButton.click();
+            // check if 10 adults are selected.
 
-            // // Make sure the Total No of Passengers
-            // WebElement totalPassengers = driver
-            //         .findElement(By.xpath("//div[@id='passenger-combobox']//input[@value='3 Passengers']"));
-            // String noOfPassengers = totalPassengers.getAttribute("value");
-            // if (noOfPassengers.equals("3 Passengers")) {
-            //     System.out.println("Correct, Total No of Passengers:" + noOfPassengers);
-            // } else {
-            //     System.out.println("Inorrect No of Passengers:");
-            // }
+           
+
+            
+            
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

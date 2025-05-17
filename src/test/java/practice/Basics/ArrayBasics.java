@@ -1,5 +1,7 @@
 package practice.Basics;
-
+import java.util.Map;
+import java.util.Collections;
+import java.util.HashMap;
 public class ArrayBasics {
 
     public void singleDimensionalArray() {
@@ -150,5 +152,89 @@ public class ArrayBasics {
        // find the book which has lowest number of copies.
 
        // find the book which is published first.
+
+        BooksCollection[] books = new BooksCollection[5];
+        books[0] = new BooksCollection("Book A", "Author A", 200, 5, "2020");
+        books[1] = new BooksCollection("Book B", "Author B", 150, 2, "2018");
+        books[2] = new BooksCollection("Book C", "Author C", 300, 10, "2021");
+        books[3] = new BooksCollection("Book D", "Author D", 250, 1, "2019");
+        books[4] = new BooksCollection("Book E", "Author E", 100, 8, "2022");
+
+       Map<String, Integer> bookCopies = new HashMap<>();
+        for (BooksCollection book : books) {
+            bookCopies.put(book.title, book.noofCopies);
+        }
+
+        
+
+    }
+
+    static class BooksCollection {
+        private String title;
+        private String author;
+        private int pages;
+        private int noofCopies;
+        private String publishedYear;
+
+        public BooksCollection(String title, String author, int pages, int noofCopies, String publishedYear) {
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.noofCopies = noofCopies;
+            this.publishedYear = publishedYear;
+        }
+
+        @Override
+        public String toString() {
+            return "BooksCollection{" +
+                    "title='" + title + '\'' +
+                    ", author='" + author + '\'' +
+                    ", pages=" + pages +
+                    ", noofCopies=" + noofCopies +
+                    ", publishedDate='" + publishedYear + '\'' +
+                    '}';
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public int getPages() {
+            return pages;
+        }
+
+        public int getNoofCopies() {
+            return noofCopies;
+        }
+
+        public String getPublishedYear() {
+            return publishedYear;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        public void setPages(int pages) {
+            this.pages = pages;
+        }
+        public void setNoofCopies(int noofCopies) {
+            this.noofCopies = noofCopies;
+        }
+        public void setPublishedYear(String publishedYear) {
+            this.publishedYear = publishedYear;
+        }
+        
+        public int compareTo(BooksCollection other) {
+            return Integer.compare(this.noofCopies, other.noofCopies);
+        }
     }
 }
