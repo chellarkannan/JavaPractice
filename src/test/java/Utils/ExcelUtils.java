@@ -8,6 +8,7 @@ import java.util.*;
 
 public class ExcelUtils {
     
+    // method to read data from an Excel sheet and return it as a 2D Object array
     public static Object[][] readExcelSheet(String workbookPath, String sheetName) throws IOException {
         List<List<Map<String, String>>> data = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(workbookPath);
