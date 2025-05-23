@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Emirates Test Suite" verbose="1" parallel="false">
+    <listeners>
+        <listener class-name="practice.emirates.TestNGListenerClass" />
+    </listeners>
+    <test name="Emirates Search Test Scenarios">
+        <classes>
+            <class name="practice.emirates.Emirates_Search_Test_Scenarios" />
+        </classes>
+    </test>
+</suite>

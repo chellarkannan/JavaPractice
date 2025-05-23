@@ -1,6 +1,7 @@
 package practice.emirates;
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -46,11 +47,18 @@ public class Emirates_Search_Test_Scenarios {
         System.out.println("Running after each test method...");
     }
 
-    @Test    
+    @Test(groups = {"smoke", "regression"})
+    public void testGroupExample() {
+        System.out.println("Testing with groups: smoke and regression...");
+        // Add your test code here
+    }
+    @Test(description = "Verify default passenger count functionality", priority = 1, enabled = true)
     public void testDefaultPassengerCount() {
         // Test Function - Check if user is able to perform search flights with default passenger count.
         System.out.println("Testing default passenger count...");
         // Add your test code here
+        Assert.assertTrue(false);
+        
     }
 
    // Check if user is able to perform search flights with default passenger count
