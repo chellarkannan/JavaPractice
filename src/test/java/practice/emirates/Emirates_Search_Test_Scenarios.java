@@ -19,7 +19,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
 @Listeners(TestNGListenerClass.class) // Registering the TestNG listener
-public class Emirates_Search_Test_Scenarios extends CommonScenario{
+public class Emirates_Search_Test_Scenarios {
 
     @DataProvider(name = "flightSearchDataExcel") // packing data
     public Object[][] flightSearchDataProvider() {
@@ -34,8 +34,8 @@ public class Emirates_Search_Test_Scenarios extends CommonScenario{
 
     @BeforeClass
     public void setUp() {
-        // Set up the WebDriver and other configurations here
-        System.out.println("Setting up the test environment...");
+        ExtentTestManager.initializeReporter("Test_"+this.getClass().getSimpleName());
+        ExtentTestManager.generateHTML();
     }
 
     @BeforeMethod
@@ -50,25 +50,31 @@ public class Emirates_Search_Test_Scenarios extends CommonScenario{
         System.out.println("Running after each test method...");
     }
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(priority = 1,groups = {"smoke", "regression"})
     public void testGroupExample() {
         System.out.println("Testing with groups: smoke and regression...");
         // Add your test code here
     }
+    @Test(priority = 2)
+    public void launchEmiratesWebsite() {
+        CommonScenario.launchBrowser(); // Launch the browser and navigate to the test UR
+      //  Assert.assertEquals(CommonScenario.getDriver().getTitle(), "Emirates - Airline, Travel & Vacation");
+        ExtentTestManager.pass("Emirates website launched successfully.",true);
+    }
 
-    @Test(dataProvider = "flightSearchDataExcel")
+    @Test(priority = 3,dataProvider = "flightSearchDataExcel")
     public void TestMethod_1(Map<Object, Object> flightData) {
         ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
         ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
     }
 
-    @Test(dataProvider = "flightSearchDataExcel")
+    @Test(priority = 4,dataProvider = "flightSearchDataExcel")
     public void TestMethod_2(Map<Object, Object> flightData) {
         ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
         ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
     }
 
-    @Test(dataProvider = "flightSearchDataExcel")
+    @Test(priority = 5,dataProvider = "flightSearchDataExcel")
     public void TestMethod_3(Map<Object, Object> flightData) {
         ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
         ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
@@ -77,6 +83,7 @@ public class Emirates_Search_Test_Scenarios extends CommonScenario{
     @AfterClass
     public void tearDown() {
         // Clean up and close the WebDriver here
+        CommonScenario.quitDriver(); // Quit the WebDriver
         System.out.println("Tearing down the test environment...");
     }
 }

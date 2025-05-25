@@ -42,41 +42,30 @@ import java.nio.file.Path;
             return currentNode;
           
         }
-
         
-        // Mark test as Pass
-        public static void pass(String message) {
-            currentNode.pass(message);
-           // attachScreenshot(message);
-           
+        // Mark test as Pass with media
+        public static void pass(String message, boolean attachScreenshot) {
+            try {
+                currentNode.pass(message).addScreenCaptureFromPath(CommonScenario.takeScreenshot());
+            } catch (Exception e) {
+                currentNode.pass(message);
+               
+            }
         }
 
-        
+        public static void pass(String message){
+            if (currentNode == null) {
+                throw new IllegalStateException("No active node. Add a node before marking as pass.");
+            }
+            currentNode.pass(message);
+        }
 
         // Mark test as Fail
         public static void fail(String message) {
             test.fail(message);
         }
 
-        // Take a screenshot and attach to the report
-        public static void attachScreenshot(String name) {
-            try {
-                File dir = new File(screenshotsPath);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                name = name.replaceAll("[^a-zA-Z0-9-_.]", "_") + "_" + System.currentTimeMillis();
-                String path = Path.of(screenshotsPath,name+".png").toString();
-                File screenshot = new File(path);
-                if (screenshot.exists()) {
-                    test.addScreenCaptureFromPath(path);
-                } else {
-                    test.warning("Screenshot not found at: " + path);
-                }
-            } catch (Exception e) {
-                test.warning("Failed to attach screenshot: " + e.getMessage());
-            }
-        }
+        
 
         // Generate the HTML report
         public static void generateHTML() {
