@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Emirates Test Suite" verbose="1" parallel="false">
+<suite name="Emirates Test Suite" verbose="1" parallel="tests" thread-count="3">
     <listeners>
         <listener class-name="Utils.TestNGListenerClass" />
     </listeners>
@@ -9,7 +9,7 @@
         </classes>
     </test>
 
-     <!-- <test name="Emirates Search Test Scenarios 2">
+     <test name="Emirates Search Test Scenarios 2">
         <classes>
             <class name="practice.emirates.Emirates_Search_Test_Scenarios" />
         </classes>
@@ -19,7 +19,6 @@
         <classes>
             <class name="practice.emirates.Emirates_Search_Test_Scenarios" />
         </classes>
-    </test> -->
-
+    </test>
 
 </suite>

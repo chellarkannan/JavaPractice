@@ -3,4 +3,4 @@ target/
 .project
 .settings/
 .vscode/
-/test-output/screenshots
+*/test-output/screenshots

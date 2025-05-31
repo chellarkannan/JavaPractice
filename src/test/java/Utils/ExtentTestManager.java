@@ -58,6 +58,7 @@ import java.nio.file.Path;
                 throw new IllegalStateException("No active node. Add a node before marking as pass.");
             }
             currentNode.pass(message);
+            System.out.println("Test passed: " + message);
         }
 
         // Mark test as Fail
