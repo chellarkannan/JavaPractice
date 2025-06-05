@@ -55,6 +55,7 @@ public class TestNGListenerClass implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        ExtentTestManager.pass("Test passed: " + result.getName(), true);
         System.out.println("Test passed: " + result.getName());
     }
 
@@ -65,6 +66,7 @@ public class TestNGListenerClass implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult result) {
+       // throw new SkippedException("Test skipped: " + result.getName());
         System.out.println("Test skipped: " + result.getName());
     }
 

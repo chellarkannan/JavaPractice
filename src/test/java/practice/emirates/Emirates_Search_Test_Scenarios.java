@@ -62,23 +62,24 @@ public class Emirates_Search_Test_Scenarios {
         ExtentTestManager.pass("Emirates website launched successfully.",true);
     }
 
-    @Test(priority = 3,dataProvider = "flightSearchDataExcel")
+    @Test(priority = 3,dataProvider = "flightSearchDataExcel", description = "")
     public void TestMethod_1(Map<Object, Object> flightData) {
+
         ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
         ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
     }
 
-    @Test(priority = 4,dataProvider = "flightSearchDataExcel")
-    public void TestMethod_2(Map<Object, Object> flightData) {
-        ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
-        ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
-    }
+    // @Test(priority = 4,dataProvider = "flightSearchDataExcel")
+    // public void TestMethod_2(Map<Object, Object> flightData) {
+    //     ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
+    //     ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
+    // }
 
-    @Test(priority = 5,dataProvider = "flightSearchDataExcel")
-    public void TestMethod_3(Map<Object, Object> flightData) {
-        ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
-        ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
-    }
+    // @Test(priority = 5,dataProvider = "flightSearchDataExcel")
+    // public void TestMethod_3(Map<Object, Object> flightData) {
+    //     ExtentTestManager.pass("Dpearture Airport: " + flightData.get("DepartureAirport").toString());
+    //     ExtentTestManager.pass("Departure Code: " + flightData.get("DepartureCode").toString());
+    // }
 
     @AfterClass
     public void tearDown() {
