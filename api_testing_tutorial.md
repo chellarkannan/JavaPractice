@@ -3,16 +3,9 @@
 
 ---
 
-## **Session Overview**
-- **Duration**: 2 hours (120 minutes)
-- **Target Audience**: Experienced software testers new to API testing
-- **Prerequisites**: Java fundamentals, testing concepts, Maven/Gradle basics
 
----
 
-## **Hour 1: API Testing Fundamentals & Rest Assured Setup (60 minutes)**
-
-### **1.1 API Testing Landscape (15 minutes)**
+### **1.1 API Testing Landscape **
 
 #### **API Types & Testing Scope**
 - **REST APIs**: Stateless, resource-based, HTTP methods (GET, POST, PUT, DELETE, PATCH)
@@ -38,7 +31,7 @@
 - **Contract Testing**: Schema validation, API versioning
 - **Integration Testing**: Service-to-service communication
 
-### **1.2 Rest Assured Framework Deep Dive (20 minutes)**
+### **1.2 Rest Assured Framework Deep Dive **
 
 #### **Why Rest Assured?**
 - **Domain Specific Language (DSL)**: Human-readable test syntax
@@ -96,7 +89,7 @@ public class APITestBase {
 }
 ```
 
-### **1.3 Core Rest Assured Patterns (25 minutes)**
+### **1.3 Core Rest Assured Patterns **
 
 #### **Basic Request Structure**
 ```java
@@ -163,9 +156,9 @@ public void testAdvancedResponseValidation() {
 
 ---
 
-## **Hour 2: Advanced Testing Patterns & Automation Framework (60 minutes)**
+## **Hour 2: Advanced Testing Patterns & Automation Framework **
 
-### **2.1 Data-Driven Testing & Test Organization (20 minutes)**
+### **2.1 Data-Driven Testing & Test Organization**
 
 #### **POJO Serialization/Deserialization**
 ```java
@@ -246,7 +239,7 @@ public void testUserCreationWithMultipleData(String name, String email, String r
 }
 ```
 
-### **2.2 Authentication & Security Testing (15 minutes)**
+### **2.2 Authentication & Security Testing**
 
 #### **API Key Authentication**
 ```java
@@ -384,7 +377,7 @@ public void testDynamicSchemaValidation() {
 }
 ```
 
-### **2.4 Advanced Framework Patterns (10 minutes)**
+### **2.4 Advanced Framework Patterns **
 
 #### **Custom Response Specifications**
 ```java
@@ -452,7 +445,7 @@ public void testWithCustomFilter() {
 
 ## **Practical Exercises & Best Practices**
 
-### **Exercise 1: End-to-End User Workflow (15 minutes)**
+### **Exercise 1: End-to-End User Workflow**
 ```java
 @Test
 public void testCompleteUserWorkflow() {
