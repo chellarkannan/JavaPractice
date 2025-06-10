@@ -1,5 +1,5 @@
 # Advanced API Testing & Automation with Java Rest Assured
-## 2-Hour Tutorial for Experienced Testers
+
 
 ---
 
